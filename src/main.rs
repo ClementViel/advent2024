@@ -27,6 +27,7 @@ fn splitVec(vector: Vec<String>) -> (Vec<i32>, Vec<i32>) {
     (vecLeft, vecRight)
 }
 
+// day 1 exercise
 fn compute(vec1: Vec<i32>, vec2: Vec<i32>) -> i32 {
     //assume vec1 and vec2 are equal size (for the sake of the exercise)
     let mut sum = 0;
@@ -36,9 +37,44 @@ fn compute(vec1: Vec<i32>, vec2: Vec<i32>) -> i32 {
     sum
 }
 
+
+//day2 exercise.
+fn similarity(vec1: Vec<i32>, vec2: Vec<i32>) -> i32 {
+    let mut num_prec = 0;
+    let mut sum_prec = 0;
+    let mut sum = 0;
+    let mut mult =0;
+    for num in vec2.iter() {
+        //cache mecanism in case of 2 similar numbers in left list
+        if *num == num_prec {
+            sum += sum_prec;
+        } else {
+            for num2 in vec1.iter() {
+                // breaking if num from right is greater than num from left
+                // to avoid going through all values.
+                if *num2 > *num {
+                    break;
+                }
+                if *num2 == *num {
+                    mult += 1;
+                } 
+            }
+        }
+        sum += *num * mult;
+        num_prec = *num;
+        sum_prec = sum;
+        mult = 0;
+    }
+    sum
+}
+
 fn main() {
     let fileVec: Vec<String> = readline("/Users/clem/Projets/prog/advent2024/advent2024/input1.txt");
     let (vec1, vec2) = splitVec(fileVec);
-    let sum = compute(vec1, vec2);
-    println!("{}", sum);
+    // uncomment days to avoid dealing with borrowing issues
+    // DAY 1 
+ //   let sum = compute(vec1, vec2);
+    // DAY 2
+    let simi_sum = similarity(vec1, vec2);
+    println!("{}", simi_sum);
 }
