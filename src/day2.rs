@@ -48,7 +48,7 @@ fn line_is_safe(line: Vec<i32>) -> bool {
 
 }
 
-fn main() {
+pub fn day2() {
     let filevec = readline("/Users/clem/Projets/prog/advent2024/advent2024/input2.txt");
     let mut safe = 0;
     for line in filevec.iter() {

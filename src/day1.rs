@@ -68,7 +68,7 @@ fn similarity(vec1: Vec<i32>, vec2: Vec<i32>) -> i32 {
     sum
 }
 
-fn main() {
+pub fn day1() {
     let fileVec: Vec<String> = readline("/Users/clem/Projets/prog/advent2024/advent2024/input1.txt");
     let (vec1, vec2) = splitVec(fileVec);
     // uncomment days to avoid dealing with borrowing issues

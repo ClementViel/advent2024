@@ -1,3 +1,8 @@
+mod day1;
+mod day2;
+
 fn main() {
-    println!("hello");
+    let day1 = day1::day1();
+    let day2 = day2::day2();
+   // let day3 = day3();
 }
